@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background: url(https://images.unsplash.com/photo-1565275706395-d452122d6cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+    50% 50% / cover no-repeat fixed;
+  font: 1rem/normal Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body:before {
+  background-color: rgb(0, 0, 0, 0.4);
+  content: "";
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+/* Above only neccessary for better style :) */
+
+/* ********** The Magic of CSS-Accordion ********** */
+#lck_accordion {
+  height: 100%;
+  margin: 5% auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+div[id^="acc-"] {
+  margin: 0 auto 0.5rem;
+  max-width: 768px;
+  position: relative;
+}
+
+div[id^="acc-"]:before {
+	content: "";
+	display: block;
+	height: 150px;
+	margin-top: -150px;
+	visibility: hidden;
+}
+
+div[id^="acc-"]:not(:target) > h1 + a,
+div[id^="acc-"]:not(:target) .acccontent {
+  display: none;
+}
+
+div[id^="acc-"]:target > h1 + a {
+  display: block;
+}
+
+div[id^="acc-"]:target .acccontent {
+  display: block;
+}
+
+div[id^="acc-"] .acccontent {
+  animation: fadeInUp 0.6s ease;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  padding: 2% 20px;
+}
+
+div[id^="acc-"] h1 {
+  margin: 0;
+  padding: 0;
+}
+
+div[id^="acc-"] h1 a,
+div[id^="acc-"] > h1 + a {
+  background-color: #2196f3;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+div[id^="acc-"] h1 a {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+
+div[id^="acc-"] > h1 + a {
+  background-color: rgba(2, 136, 209, 0.8);
+  position: absolute;
+  left: 0;
+  text-align: center;
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+  width: 100%;
+  z-index: 200;
+}
+
+div[id^="acc-"] h1 a:hover,
+div[id^="acc-"] > h1 + a:hover {
+  /* background-color: #03A9F4; */
+  color: #fff;
+  transition: 0.2s all ease-in-out;
+}
+
+@keyframes fadeInUp {
+ from {
+  opacity: 0.1;
+  -webkit-transform: translate3d(0, 10%, 0);
+  transform: translate3d(0, 10%, 0);
+ }
+ to {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+ }
+}
